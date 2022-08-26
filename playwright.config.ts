@@ -52,7 +52,7 @@ const config: PlaywrightTestConfig = {
   //   timeout: 120 * 1000,
   //   reuseExistingServer: true,
   // },
-  /* Configure projects for major browsers */
+  /* Configure projects for major browsers  */
   projects: [
     {
       name: 'chromium',
