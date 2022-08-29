@@ -60,7 +60,7 @@ test.describe.only("Test Ivehte Web", () => {
     /** Fin Agenda par personnel */
   })
 
-  test("Créer un évenement", async ( {page} ) => {
+  test.skip("Créer un évenement", async ( {page} ) => {
     /****** Début Test Créer événement ******/
     await page.goto('https://staging-ivehte-dev.madait-lab.com/dashboard');
     const ongletAgenda = page.locator("text=Mon agenda").first();
@@ -263,7 +263,7 @@ test.describe.only("Test Ivehte Web", () => {
     await page.locator('button:has-text("Enregistrer l\'HDJ")').click();
   })
 
-  test('Créer un Atelier', async ({ page }) => {
+  test.skip('Créer un Atelier', async ({ page }) => {
     await page.goto('https://staging-ivehte-dev.madait-lab.com/dashboard');
     await page.locator('#root >> text=Paramètres').click();
     await page.locator('text=Ateliers').click();
