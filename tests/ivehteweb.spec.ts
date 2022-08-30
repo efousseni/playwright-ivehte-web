@@ -53,8 +53,8 @@ test.describe.only("Test Ivehte Web", () => {
     /** Début Agenda par personnel */
     await page.goto('https://staging-ivehte-dev.madait-lab.com/agenda');
     await page.locator('text=Partage d\'agenda').click();
-    await page.locator('text=Adrienne Moulin').click();
-    await page.locator("text=Emmanuel Leveque").click();
+    await page.locator('text=Yves Vallet').click();
+    await page.locator("text=Constance Langlois").click();
     await page.locator('button:has-text("Partager")').click();
     //await page.pause();
     /** Fin Agenda par personnel */
@@ -99,7 +99,7 @@ test.describe.only("Test Ivehte Web", () => {
       .click();
     await page.keyboard.press("Tab");
     await page.keyboard.press("Tab");
-    await page.locator("text=Roger Alain").click();
+    await page.locator("text=Techer Timothée").click();
     // await page.keyboard.press("Tab");
     // await page.locator("text=Jacquot Margaret").check();
     // await page.pause();
@@ -337,4 +337,14 @@ test.describe.only("Test Ivehte Web", () => {
     await page.locator('input[type="radio"]').nth(2).check();
     await page.locator('input[type="radio"]').first().check();
   });
+
+  test("Créer évaluation", async ({ page }) => {
+    await page.goto('https://staging-ivehte-dev.madait-lab.com/dashboard');
+    await page.locator('#root ul[role="menu"] >> text=Patients').click();
+    // await expect(page).toHaveTitle("EVALUATION");
+    await page.locator('text=EVALUATION').click();
+    await page.locator('[placeholder="Tapez votre texte"]').click();
+    await page.keyboard.type('TEST CICD');
+    await page.locator('button:has-text("VALIDER L\'OBSERVATION")').click();
+  })
 });
