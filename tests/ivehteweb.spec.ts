@@ -285,7 +285,7 @@ test.describe.only("Test Ivehte Web", () => {
     await page.locator('button:has-text("Valider l\'Atelier")').click();
   });
 
-  test.skip("Créer un programme", async( {page} ) => {
+  test("Créer un programme", async( {page} ) => {
     await page.goto('https://staging-ivehte-dev.madait-lab.com/dashboard');
     await page.locator('#root >> text=Programmes').click();
     await page.locator('button:has-text("créer un nouveau programme")').click();
@@ -303,11 +303,11 @@ test.describe.only("Test Ivehte Web", () => {
     await page.locator('text=Date Fin :​ >> [placeholder="dd\\/mm\\/yyyy"]').click();
     await page.keyboard.press('Control+a');
     await page.keyboard.type('03/09/2022');
-    await page.locator('[placeholder="Rechercher par nom"]').click();
-    await page.keyboard.type('Test');
-    await page.locator('text=Test CICD Atelier').click();
+    // await page.locator('[placeholder="Rechercher par nom').click();
+    // await page.keyboard.type('Test');
+    await page.locator('text=Atelier 9 :Commodi.').click();
     //await page.locator('[placeholder="Rechercher par nom"]').click();
-    await page.locator('text=IVEHTE 2 TEST 2 CICD2').click();
+    await page.locator('text=Duval Joseph').click();
     await page.locator('button:has-text("Valider le programme")').click();
   })
 
@@ -347,4 +347,25 @@ test.describe.only("Test Ivehte Web", () => {
     await page.keyboard.type('TEST CICD');
     await page.locator('button:has-text("VALIDER L\'OBSERVATION")').click();
   })
+
+  test('Créer observation', async ({ page }) => {
+    await page.goto('https://staging-ivehte-dev.madait-lab.com/dashboard');
+    await page.locator('#root ul[role="menu"] >> text=Patients').click();
+    await page.locator('text=OBSERVATIONS').click();
+    await page.locator('button:has-text("Ajouter une Observation")').click();
+    await page.locator('text=Titre de l\'observation :​ >> [placeholder="Tapez votre texte"]').click();
+    await page.keyboard.type('TEST CICD');
+    await page.locator('[placeholder="Renseigner le nom de l\\\'intervenant"]').click();
+    await page.keyboard.press('ArrowDown');
+    await page.keyboard.press('Enter');
+    await page.locator('[placeholder="Sélectionnez un observation"]').click();
+    await page.keyboard.press('ArrowDown');
+    await page.keyboard.press('Enter');
+    await page.locator('[placeholder="Sélectionnez un programme"]').click();
+    await page.keyboard.press('ArrowDown');
+    await page.keyboard.press('Enter');
+    await page.locator('[id="_details_observation"]').click();
+    await page.keyboard.type('TEST AUTO CICD');
+    await page.locator('button:has-text("VALIDER L\'OBSERVATION")').click();
+  });
 });
