@@ -285,7 +285,7 @@ test.describe.only("Test Ivehte Web", () => {
     await page.locator('button:has-text("Valider l\'Atelier")').click();
   });
 
-  test("Créer un programme", async( {page} ) => {
+  test.skip("Créer un programme", async( {page} ) => {
     await page.goto('https://staging-ivehte-dev.madait-lab.com/dashboard');
     await page.locator('#root >> text=Programmes').click();
     await page.locator('button:has-text("créer un nouveau programme")').click();
