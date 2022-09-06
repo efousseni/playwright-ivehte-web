@@ -27,11 +27,22 @@ test.describe.only("Test Ivehte Web", () => {
    * Filtrage agenda par date, spécialité et type d'affichage
    */
   test("Filtrage agenda", async ({ page }) => {
+    const monthNames = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"
+    ];
+    const d = new Date();
+    // var dd = String(d.getDate()).padStart(2, '0');
+    // var mm = String(d.getMonth() + 1).padStart(2, '0');
+    var yyyy = d.getFullYear();
+    var mounth = monthNames[d.getMonth()];
+    var year = yyyy;
+    // var fullDate = +dd +"-"+ monthNames[d.getMonth()] +"-"+ yyyy;
+    // console.log(mounth + year);
+    
     const ongletAgenda = page.locator("text=Mon agenda").first();
     await ongletAgenda.click();
 
     /** Début Agenda par date */
-    await page.locator(`text=August 2022`).click();
+    await page.locator(`text=${mounth} ${year}`).click();
     await page.locator("text=June").click();
     await page.locator('button:has-text("29")').click();
     // await page.pause();
